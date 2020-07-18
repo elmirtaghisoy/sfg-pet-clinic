@@ -7,16 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/vets")
 public class VetController {
 
     @Autowired
     VetService vetService;
 
-    @RequestMapping({"","/","/index","/index.html"})
-    public String index(
-            Model model
-    ){
+    @RequestMapping({"/vets", "/vets/index", "/vets/index.html", "/vets.html"})
+    public String listVets(Model model){
         model.addAttribute("vets",vetService.findAll());
         return "vets/index";
     }
